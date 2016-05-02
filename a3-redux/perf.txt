@@ -1,0 +1,46 @@
+hadoop.home = /Users/ajay/Downloads/hadoop-2.6.3/
+############ AWS S3 Initialization #######################
+
+region = us-west-2
+# where are we running? 
+
+check.logs = s3://a3-redux/logs
+# where are the logs?
+
+delete.output = s3://a3-redux/output
+# which directory should we delete before running?
+
+######### AWS EMR Cluster Configuration #################
+cluster.name = CS6240Cluster
+# how to name the cluster?
+
+step.name = Step1_sa
+# how to name the step?
+
+release.label = emr-4.3.0
+# what EMR release?
+
+log.uri = s3://a3-redux/logs/
+# where are the logs?
+
+service.role = EMR_DefaultRole
+# role?
+
+job.flow.role = EMR_EC2_DefaultRole
+# role?
+
+ec2.key.name = my_mbp_rsa
+# which ec2 key should we use?
+
+instance.count = 2
+# how many nodes to provision?
+
+keep.job.flow.alive = false
+# keep cluster alive?
+
+master.instance.type = m3.xlarge
+# which master instance type?
+
+slave.instance.type = m3.xlarge
+# which node instance type?
+Status 

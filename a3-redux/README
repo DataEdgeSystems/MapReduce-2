@@ -1,0 +1,181 @@
+##################################################################
+############################# README #############################
+##################################################################
+
+Authors : Smitha Bangalore Naresh & Ajay Subramanya
+ 
+######################### Prerequisites ##########################
+
+> To run sequential and mutli-threaded code , you need to have a 
+folder by the name input in your project base directory
+
+> Use the makefile provided by prof. to setup your Hadoop 
+  environment. Everything would be the same, except that you 
+  would need a directory by the name `input` residing on your local 
+  HDFS. So when you do a `hadoop fs -ls` you should be able to see 
+  a directory by the name `input` there. In short hadoop must 
+  be running.
+
+Something like this :
+
+5319 ± hadoop fs -ls
+Found 4 items
+drwxr-xr-x   - ajay supergroup          0 2016-02-05 19:25 input 
+
+> Please update perf.txt with your `ec.key.name` and bucketname's
+
+> we would try and add as random a bucketname as possible in the 
+  makefile, but if it does not exist , please replace it with 
+  something that does. 
+  
+> We are using Apache Maven 3.3.9 for dependency management and
+  build automation 
+
+########################### Makefile #############################
+
+> don't try to mess with it until/unless you want to change the 
+  number of times you want to execute a job 
+
+> The make is designed in a modular fashion, where each individual\
+  task could be run by it self and also all the individual tasks 
+  could be grouped into one large task , which could also be 
+  executed. 
+
+> Although the specification for the task is to run all of them 
+  in a go, I would rather suggest you to run them individually 
+  since there is hardly any notifications , so it would be easier
+  to keep tab on what is going on.
+
+########################### Caveats ##############################
+
+> Since we are running pseudo and cloud more than once we would 
+  get an error saying that file exists. To overcome this we 
+  append the time stamp to the filename passed in as argument. 
+  Since we have dynamically named directory names we would not 
+  be able to get them down to the project base directory for 
+  pseudo and cloud. please `hadoop fs -get dynamic_dir_name` to 
+  get it. Also for cloud please look at the s3 bucket
+  
+> Main class is App.java 
+
+> folder structure is : 
+
+	├── BuildReport.R
+	├── Graphs.R
+	├── README
+	├── Rplots.pdf
+	├── graphs.Rmd
+	├── lib
+	│   └── opencsv-2.2.jar
+	├── makefile
+	├── perf.txt
+	├── pom.xml
+	├── src
+	│   ├── main
+	│   └── test
+	└── uber-perf-0.0.1.jar
+
+> There are some commands in the makefile prior to invoking perf
+ which are used to setup  the stage for the JAR execution
+
+	> `mvn clean` : removing target classes(&/)JAR(s)
+	> `mvn package` : packages the code and all its associated 
+	   dependencies into a fat/uber JAR 	
+	> `-ZIP -d target/a3_redux_sa.jar META-INF/LICENSE` : for 
+	    some weird reason know only to the computer gods Mac OS X 
+		does not differentiate between lower and upper case. ref 
+		[http://www.uranux.com/hadoop/mkdir_failed.html]
+		- Translate page to English 	
+		
+> Exception times also depends on system loads
+
+> Number of threads is fixed to Five in multi-threaded program.
+
+> we are using maven for dependency management
+
+############################# RUN #################################
+
+
+######################### SINGLETHREADED ##########################
+
+> `make single_mean`
+> `make single_median`
+
+######################### MULTITHREADED ###########################
+
+> `make multi_mean`
+> `make multi_median`
+
+###################### PSEUDO-DISTRIBUTION ########################
+
+> `make pseudo_mean`
+> `make pseudo_median`
+> `make pseudo_fast_median`
+
+######################### DISTRIBUTION ############################
+
+> `make cloud_mean`
+> `make cloud_median`
+> `make cloud_fast_median`
+
+############################# SINGLE ##############################
+
+> `make single`
+
+############################# MULTI ###############################
+
+> `make multi`
+
+############################# PSEUDO ##############################
+
+> `make pseudo`
+
+############################# CLOUD ###############################
+
+> `make cloud`
+
+############################# GRAPHS ##############################
+
+> `make graphs` # run this only after you have the mean_results.csv
+   & median_results.cv CSV
+
+############################### ALL ###############################
+
+> `make all`
+
+############################### mCv ###############################
+
+> m C v results for sequential mean are found in a folder called 
+  seq_mean created in your current folder 
+> m C v results for sequential median are found in a folder 
+  called seq_median created in your current folder 
+> m C v results for multi threaded mean are found in a folder 
+  called multi_mean created in your current folder 
+> m C v results for multi threaded median are found in a folder 
+  called multi_median created in your current folder 
+> m C v results for pseudo mean, median, fast median are found 
+  in a folder called output appended with time stamp created in 
+  your hadoop output directory
+> m C v results for cloud mean, median, f are found in a folder 
+  called seq_mean created in your s3 output folder 
+  
+ ######################### R & Markdown & Report ###################
+  
+> Need R, markdown, knitr, pandoc to generate the report using 
+  provided BuildReport.R and graphs.Rmd markdown file. Some links 
+  for Mac : 
+http://rprogramming.net/create-html-or-pdf-files-with-r-knitr\
+	-miktex-and-pandoc/
+
+> If everything is setup correctly then running RScript 
+  BuildGraphs.R will automatically generate graphs.pdf report.
+
+> Else the simplest way to view graphs only without report because 
+  you had difficulty in setup of markdown is to run RScript Graphs.R
+  and in command line of current directory output is Rplots.pdf
+
+ ######################### Sample Report & plots ###################
+
+> Sample reports and results are present in SampleResults folder
+
+############################# THE END #############################

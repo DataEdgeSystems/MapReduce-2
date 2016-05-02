@@ -1,0 +1,109 @@
+---
+title: "Assignment A3-Redux"
+author: "Smitha Bangalore Naresh & Ajay Subramanya"
+date: "February 6, 2016"
+output:
+  pdf_document:
+    fig_crop: no
+    fig_width: 5
+  html_document: default
+---
+
+This file contains the plots for different Run configurations vs Time taken in seconds.
+---
+First plot : plots the time taken to calculate mean in sequential(seq_mean), multithreaded(multi_mean), pseudo-distrubited-mode(pseudo-mean), cloud(cloud_mean) environments
+
+Second plot : plots the time taken to calculate median in sequential(seq_median), multithreaded(multi_median), pseudo-distrubited-mode(pseudo-median), pseudo-distrubited-mode(pesudo-fast), cloud(cloud_median) , cloud(cloud_fast) environments
+
+Third plot : combines both plots above for visualization
+
+
+```{r, echo=FALSE}
+
+dfMeanData = read.csv("mean_results.csv", header = FALSE)  # read from second sheet
+
+colnames(dfMeanData) = c("Type", "Run", "Time")
+
+c2 = toupper(c("seq_mean","multi_mean","pseudo_mean","cloud_mean"))
+dfMeanData$Type = ordered(toupper(dfMeanData$Type), levels=c2)
+boxplot(Time~Type, data = dfMeanData,
+        horizontal=F,
+        range = 0,
+        las = 2,
+        xaxt = "n",
+        yaxt = "n",
+        # xlab = "Run Environment", 
+        ylab = "Time in Seconds", 
+        main = "Mean : Run Config vs Time",
+        cex.main = 1.5,   font.main= 1, col.main= "blue")
+text(1:length(levels(dfMeanData$Type)), 
+     srt = 45, offset = 0.5, adj = 1,
+     labels = levels(dfMeanData$Type), xpd = TRUE,cex = 0.5)
+axis(2, round(seq(0, max(dfMeanData$Time, na.rm= T), length.out = 15)), las = 2)
+```
+
+
+
+
+```{r, echo=FALSE}
+
+dfMedianData = read.csv("median_results.csv", header =FALSE)  # read from first sheet
+colnames(dfMedianData) = c("Type", "Run", "Time")
+
+c1 = toupper(c("seq_median","multi_median","pseudo_median","pseudo_fast","cloud_median","cloud_fast"))
+dfMedianData$Type = ordered(toupper(dfMedianData$Type), levels=c1)
+boxplot(Time~Type, data = dfMedianData,
+        horizontal=F,
+        range = 0,
+        las = 2,
+        xaxt = "n",
+        yaxt = "n",
+        # xlab = "Run Environment", 
+        ylab = "Time in Seconds", 
+        main = "Median : Run Config vs Time",
+        cex.main = 1.5,   font.main= 1, col.main= "blue")
+text(1:length(levels(dfMedianData$Type)), 
+     srt = 45, offset = 0.5, adj = 0.5,
+     labels = levels(dfMedianData$Type), xpd = TRUE,cex = 0.5)
+axis(2, round(seq(0, max(dfMedianData$Time, na.rm= T), length.out = 15)), las = 2)
+```
+
+
+
+
+
+
+```{r, echo=FALSE}
+dfMedianData = read.csv("median_results.csv", header =FALSE)  # read from first sheet
+dfMeanData = read.csv("mean_results.csv", header =FALSE)  # read from second sheet
+
+colnames(dfMedianData) = c("Type", "Run", "Time")
+colnames(dfMeanData) = c("Type", "Run", "Time")
+
+c = toupper(c("seq_median","seq_mean","multi_mean","multi_median","pseudo_mean","pseudo_median","pseudo_fast","cloud_mean","cloud_median","cloud_fast"))
+dfConsolidatedData = rbind(dfMedianData, dfMeanData)
+dfConsolidatedData$Type = ordered(toupper(dfConsolidatedData$Type), levels=c)
+
+boxplot(Time~Type, data = dfConsolidatedData,
+        horizontal=F,
+        range = 0,
+        las = 2,
+        xaxt = "n",
+        yaxt = "n",
+        # xlab = "Run Environment", 
+        ylab = "Time in Seconds", 
+        main = "Mean & Median : Run Config vs Time",
+        cex.main = 1.5,   font.main= 1, col.main= "blue")
+text(1:length(levels(dfConsolidatedData$Type)), 
+     srt = 45, offset = 0.5, adj = 1,
+     labels = levels(dfConsolidatedData$Type), xpd = TRUE,cex = 0.5)
+axis(2, round(seq(0, max(dfConsolidatedData$Time, na.rm= T), length.out = 15)), las = 2)
+```
+
+
+Interpretation :
+
+Time taken for sequential depends on the system load.
+Time taken for multi is almost same.
+All pseudo and cloud runs take similar times.
+
