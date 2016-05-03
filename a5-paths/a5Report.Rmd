@@ -1,0 +1,31 @@
+---
+title: "Assignment A5"
+author: "Smitha Bangalore Naresh & Ajay Subramanya"
+date: "February 20, 2016"
+output:
+  pdf_document:
+    fig_crop: no
+    fig_width: 5
+  html_document: default
+---
+
+Task is to find connections and missed connections for all two-hop paths.
+
+The file contains our design choices and implementation details is provided in README.
+
+Most important design choice we had to make is to chose an optimal Data structure for our reducer. We initially started off working on a day's data.Here the obvious choice was a HashMap to hold the data for a day. But as we scaled we realised that the HashMap alone won't be able to do the heavy lifting.
+
+We made use of a TreeMap, which sorts the keys using a custom defined comparator, so we have a TreeMap of ListMultiMap. This enabled us to have all the data for a year, month and day in an atomic place. Our ListMultiMap is sorted on by the hour, so the first item in the map would be the first hour in the day and so on. We do this to limit the number of comparisons. For instance we have a flight arriving at 9am, all we need to compare this flight with is the keys in the Linked MultiMap that have keys 9-15. This would be huge win when we take on 337 files.
+
+Other than this, the design of most parts of the code is pretty much vanilla hadoop.
+
+
+Performance
+---
+
+Takes on an average 35 (+ provisioning ) minutes to run on a 3 node cluster of mx.large for all the 337 files.
+
+
+
+
+
