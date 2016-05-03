@@ -1,0 +1,87 @@
+---
+title: "Assignment A4-Regression"
+author: "Smitha Bangalore Naresh & Ajay Subramanya"
+date: "February 13, 2016"
+output:
+  pdf_document:
+    fig_crop: no
+    fig_width: 5
+  html_document: default
+---
+
+This file contains timeseries plot for Year vs Median prices for a cheapest airline for a given flight time over years.
+
+The Cheapest flight(i.e. flight with lowest average price) is calculated using simple linear regression with variables X=Schedule Flight Time and Y=Avg Price and then picking the flight with cheapest Average Price over years for a given flight time N.
+
+The median prices are then obtained every week for the cheapest flight and used to plot the graph.
+---
+
+
+```{r, echo=FALSE}
+setwd(getwd())
+
+library(ggplot2)
+library(scales)
+dfRawData = read.csv('a4_regression_sa_200.csv', header = F, sep = ',', quote = "")
+
+colnames(dfRawData) = c("Date", "Week", "MediaPrice")
+dfRawDataNull = subset(dfRawData, (is.na(dfRawData$MediaPrice)))
+dfRawDataNNull = subset(dfRawData, !(is.na(dfRawData$MediaPrice)))
+colnames(dfRawDataNull) = c("Flight", "Time")
+
+# Sorting by Date 
+dfRawDataNNull = dfRawDataNNull[order(dfRawDataNNull$Date), ]
+dfRawDataNNull$Date = as.Date( dfRawDataNNull$Date, '%Y-%m-%d')
+plot.title = paste("Cheapest Flight = ", unique(dfRawDataNull$Flight), sep="")
+plot.subtitle = paste("For Flight Time = ", unique(dfRawDataNull$Time), sep="")
+
+ggplot(dfRawDataNNull, aes(Date, MediaPrice)) + 
+  geom_line(colour="blue") +
+  xlab("Period in Year(s)") + 
+  ylab("Median Price in Dollar(s)") +
+  ggtitle(bquote(atop(.(plot.title), atop(italic(.(plot.subtitle)), "")))) + 
+  scale_x_date(labels = date_format("%Y"))
+```
+
+```{r, echo=FALSE}
+setwd(getwd())
+
+library(ggplot2)
+library(scales)
+dfRawData = read.csv('a4_regression_sa_1.csv', header = F, sep = ',', quote = "")
+
+colnames(dfRawData) = c("Date", "Week", "MediaPrice")
+dfRawDataNull = subset(dfRawData, (is.na(dfRawData$MediaPrice)))
+dfRawDataNNull = subset(dfRawData, !(is.na(dfRawData$MediaPrice)))
+colnames(dfRawDataNull) = c("Flight", "Time")
+
+# Sorting by Date 
+dfRawDataNNull = dfRawDataNNull[order(dfRawDataNNull$Date), ]
+dfRawDataNNull$Date = as.Date( dfRawDataNNull$Date, '%Y-%m-%d')
+plot.title = paste("Cheapest Flight = ", unique(dfRawDataNull$Flight), sep="")
+plot.subtitle = paste("For Flight Time = ", unique(dfRawDataNull$Time), sep="")
+
+ggplot(dfRawDataNNull, aes(Date, MediaPrice)) + 
+  geom_line(colour="blue") +
+  xlab("Period in Year(s)") + 
+  ylab("Median Price in Dollar(s)") +
+  ggtitle(bquote(atop(.(plot.title), atop(italic(.(plot.subtitle)), "")))) + 
+  scale_x_date(labels = date_format("%Y"))
+```
+
+
+Interpretation :
+
+After running the Jobs for two runs , one where N = 1 and N = 200 (Where N is the scheduled flight time for which we need to get the cheapest flight avg price over years) these are our observations,
+
+* We noticed three major dips , during 1995, between 2000 and 2005 and again in 2005 and 2010. There could be various resons for this, we were able to guess the reason for the dip between 2000 and 2005. It could be the major recession ( source : [https://en.wikipedia.org/wiki/Early_2000s_recession ] ). Other dips could also be
+related to economic flucuations.
+
+* An other obivious observation is that the prices have been going up from the 1990s
+
+* Flight median prices have been more flat in the 90's (Except for one major drop in CO) as compared to the 2000's and afterwards where there has be constant fluctuation in the prices.
+
+* While comparing the graphs for the the two runs (that is : N=1 and N=200) we noticed that the variations in median price was almost similar, except for the airline CO which has a dip during 1995.
+
+
+
