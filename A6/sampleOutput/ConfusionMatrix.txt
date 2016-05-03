@@ -1,0 +1,92 @@
+
+Confusion Matrix For Full Data
+	TRUE 		 FALSE
+TRUE	1536130		905285
+FALSE	1362312		1259631
+
+Correct Prediction :0.5521555062865395
+Error Prediction :0.4478444937134605
+Confusion Matrix For Month 1
+	TRUE 		 FALSE
+TRUE	165684		28629
+FALSE	141307		41165
+
+Correct Prediction :0.5489841686903671
+Error Prediction :0.4510158313096328
+Confusion Matrix For Month 2
+	TRUE 		 FALSE
+TRUE	131365		68029
+FALSE	112584		79645
+
+Correct Prediction :0.5388090076425542
+Error Prediction :0.4611909923574458
+Confusion Matrix For Month 3
+	TRUE 		 FALSE
+TRUE	139315		86751
+FALSE	110557		105322
+
+Correct Prediction :0.5535462557558067
+Error Prediction :0.44645374424419326
+Confusion Matrix For Month 4
+	TRUE 		 FALSE
+TRUE	108950		98370
+FALSE	96249		124993
+
+Correct Prediction :0.5458790093382054
+Error Prediction :0.45412099066179457
+Confusion Matrix For Month 5
+	TRUE 		 FALSE
+TRUE	114754		100303
+FALSE	94704		123220
+
+Correct Prediction :0.5496176506590359
+Error Prediction :0.45038234934096416
+Confusion Matrix For Month 6
+	TRUE 		 FALSE
+TRUE	163151		71473
+FALSE	117421		71761
+
+Correct Prediction :0.5542913502876317
+Error Prediction :0.4457086497123684
+Confusion Matrix For Month 7
+	TRUE 		 FALSE
+TRUE	127235		83449
+FALSE	114654		120025
+
+Correct Prediction :0.5551875660977674
+Error Prediction :0.4448124339022326
+Confusion Matrix For Month 8
+	TRUE 		 FALSE
+TRUE	131059		78264
+FALSE	118627		115525
+
+Correct Prediction :0.5560268335306388
+Error Prediction :0.4439731664693613
+Confusion Matrix For Month 9
+	TRUE 		 FALSE
+TRUE	62022		101411
+FALSE	68855		172747
+
+Correct Prediction :0.5796264520350093
+Error Prediction :0.42037354796499066
+Confusion Matrix For Month 10
+	TRUE 		 FALSE
+TRUE	105806		88337
+FALSE	112649		135922
+
+Correct Prediction :0.5460139051396613
+Error Prediction :0.45398609486033875
+Confusion Matrix For Month 11
+	TRUE 		 FALSE
+TRUE	97432		75094
+FALSE	115821		131039
+
+Correct Prediction :0.5447749805668286
+Error Prediction :0.45522501943317134
+Confusion Matrix For Month 12
+	TRUE 		 FALSE
+TRUE	189357		25175
+FALSE	158884		38267
+
+Correct Prediction :0.5529108561684597
+Error Prediction :0.4470891438315403

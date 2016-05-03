@@ -1,0 +1,22 @@
+
+AA, delayed,	798380.0
+AA, on_time,	851833.0
+AS, delayed,	270622.0
+AS, on_time,	146790.0
+CO, delayed,	618448.0
+CO, on_time,	604440.0
+DL, delayed,	1570796.0
+DL, on_time,	1060679.0
+HP, delayed,	364668.0
+HP, on_time,	223397.0
+NW, delayed,	723884.0
+NW, on_time,	821505.0
+TW, delayed,	414441.0
+TW, on_time,	386747.0
+UA, delayed,	1093471.0
+UA, on_time,	1042273.0
+US, delayed,	1127961.0
+US, on_time,	1045950.0
+WN, delayed,	1019846.0
+WN, on_time,	1169281.0
+

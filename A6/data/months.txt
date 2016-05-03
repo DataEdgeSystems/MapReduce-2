@@ -1,0 +1,26 @@
+
+1, delayed,	694563.0
+1, on_time,	497946.0
+10, delayed,	671080.0
+10, on_time,	664278.0
+11, delayed,	624252.0
+11, on_time,	609974.0
+12, delayed,	702368.0
+12, on_time,	479820.0
+2, delayed,	646565.0
+2, on_time,	564886.0
+3, delayed,	682619.0
+3, on_time,	644245.0
+4, delayed,	639000.0
+4, on_time,	659574.0
+5, delayed,	651801.0
+5, on_time,	675595.0
+6, delayed,	715917.0
+6, on_time,	583614.0
+7, delayed,	694986.0
+7, on_time,	647125.0
+8, delayed,	695933.0
+8, on_time,	626881.0
+9, delayed,	583433.0
+9, on_time,	698957.0
+

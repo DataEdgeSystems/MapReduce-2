@@ -1,0 +1,16 @@
+
+1, delayed,	1128328.0
+1, on_time,	1115270.0
+2, delayed,	1126916.0
+2, on_time,	1122119.0
+3, delayed,	1185805.0
+3, on_time,	1057073.0
+4, delayed,	1241895.0
+4, on_time,	985693.0
+5, delayed,	1286442.0
+5, on_time,	948870.0
+6, delayed,	950380.0
+6, on_time,	1061590.0
+7, delayed,	1082751.0
+7, on_time,	1062280.0
+
